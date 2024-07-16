@@ -38,6 +38,7 @@ function star() {
 // star();
 
 // GCF
+
 function gcf(a, b) {
   let c;
   if (a > b) {
@@ -54,5 +55,4 @@ function gcf(a, b) {
   }
   console.log(val);
 }
-
 // gcf(20, 24);
