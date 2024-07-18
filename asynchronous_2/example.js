@@ -67,3 +67,18 @@ function delayed(sec) {
 //     return loop();
 // } 
 // loop();
+
+// Fetch data 
+fetch("https://jsonplaceholder.typicode.com/posts")
+.then(response => response.json())
+.then(data => {
+    updateUi(data)
+}).catch((err) => console.error(err));
+
+function updateUi(albums) {
+    for(let albums of album) {
+        let container = document.createElement("div");
+        document.getElementById('diplayData').append(container);
+        container.textContent = `${album["id"]}. ${album["title"]}`;
+    }
+}

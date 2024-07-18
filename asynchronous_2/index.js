@@ -45,6 +45,31 @@ main();
         2. Async task(web api)
         3. Callback(queues)
         4. Event Loop(event loop)
+*/
+
+// Event driven programming
+
+/*
+    Event-driven programming is a programming paradigm where the flow of the program is determined by events.
+    Events can be user actions (e.g., clicks, key presses) or messages from other programs/threads.
+    Key concepts:
+        1. Event
+            An action or occurrence recognized by software (e.g. mouse click, key press)
+        2. Event Handler (Listener)
+            A function that runs in response to an event.
+            Attached to an element to handle specific events.
+        3. Event Loop:
+            Continuously checks for and processes events, invoking corresponding event handlers.
+    Common events:
+        1. Mouse Events:  click, dblclick, mouseover, mouseout, mousedown, mouseup
+        2. Keyboard Events: keydown, keypress, keyup
+        3. Form Events: submit, change, focus, blur, etc…
+        4. Document / Window Events: load, resize, scroll, unload DOMContentLoaded, resize, scroll, etc.
+    Benefits 
+        1. Responsive UI
+        2. Decoupled code
+        3. Asynchronous operations 
+
 
 */
 
