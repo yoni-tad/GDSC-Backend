@@ -1,4 +1,4 @@
-// ---------------------- Asynchronous 1 Exercise ----------------------
+// ---------------------- Asynchronous 2 Exercise ----------------------
 // QUIZ
 Promise.resolve().then(() => {
     console.log(1);
