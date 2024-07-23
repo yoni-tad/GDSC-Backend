@@ -26,5 +26,4 @@ function fetcher1() {
         })
     });
 }
-
 fetcher1();
