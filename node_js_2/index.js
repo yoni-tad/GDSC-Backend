@@ -13,7 +13,7 @@
             Provide high performance and effecient execution js code.
             Parse and executes js code
     Node.js features
-        Fast data streaming 
+        Fast data streaming  
         No buffering
         Asynchronous 
         Cross platform compatibility
@@ -49,6 +49,12 @@
             npm init -y
         Install packages
             npm install <package-name>
+            example instal: express
+        Update package
+            npm update
+        Uninstall packages
+            npm uninstall <package-name>
+        
     
     
     
