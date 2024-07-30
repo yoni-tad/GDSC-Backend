@@ -8,10 +8,9 @@ const server = http.createServer((req, res) => {
 });
 
 function errorMW(err, req, res){
-    console.log(err);
-    console.log(err.url);
-    console.log(err.statusCode);
-
+    console.log(`This url not found: ${err}`);
+    // console.log(err.url);
+    // console.log(err.statusCode);
 }
  
 function requestHandler(err, req, res) {
@@ -22,11 +21,10 @@ function requestHandler(err, req, res) {
         res.writeHead(200, { 'Content-Type': 'text/plain'});
         res.end('This is a protected route');
     } else {
-        
+        errorMW(err);
         // res.writeHead(200, { 'Content-Type': 'text/plain'});
         // res.end('Not found');
-    }
-    errorMW(err, req, res);
+    }    
 }
 
 server.listen(port, () => {
