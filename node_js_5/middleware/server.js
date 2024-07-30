@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
 });
 
 function errorMW(err, req, res){
-    console.log(`This url not found: ${err}`);
+    console.log(`This url not found: ${err.url}`);
     // console.log(err.url);
     // console.log(err.statusCode);
 }
