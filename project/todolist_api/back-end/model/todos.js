@@ -8,11 +8,7 @@ const TodoSchema = new mongoose.Schema({
     checked: {
         type: Boolean,
         default: false
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     }
-})
+}, {timestamps: true})
 
 module.exports = mongoose.model("todo", TodoSchema)
