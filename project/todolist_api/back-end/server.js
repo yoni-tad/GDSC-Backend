@@ -7,5 +7,6 @@ mongoose.connect('mongodb://localhost/todo')
 
 app.use(express.json())
 app.use('/api', router)
+app.use(express.static('../front-end'))
 
 app.listen(3000, () => console.log("Server start port at 3000"))
