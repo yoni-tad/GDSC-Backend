@@ -15,7 +15,7 @@ exports.getTodoController = async (req, res) => {
 
 exports.postTodoController = async (req, res) => {
     try {
-        const newTodo = Todo.create({
+        const newTodo = await Todo.create({
             todo: req.body.todo
         })
 
