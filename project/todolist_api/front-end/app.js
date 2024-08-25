@@ -1,6 +1,8 @@
+const domain = "https://gdsc-backend-todo-list.onrender.com";
+
 async function fetchTodos() {
   try {
-    const response = await fetch("https://gdsc-backend-todo-list.onrender.com/api/todos");
+    const response = await fetch(`${domain}/api/todos`);
     const todos = await response.json();
 
     const todoList = document.getElementById("todo-list");
@@ -44,16 +46,13 @@ async function fetchTodos() {
         const updateTodo = { checked: checkbox.checked };
 
         try {
-          const response = await fetch(
-            `https://gdsc-backend-todo-list.onrender.com/api/todos/${todoId}`,
-            {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(updateTodo),
-            }
-          );
+          const response = await fetch(`${domain}/api/todos/${todoId}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updateTodo),
+          });
 
           if (!response.ok) {
             console.log("Failed update todo", response);
@@ -65,25 +64,25 @@ async function fetchTodos() {
     });
 
     // delete
-    todoList.addEventListener("click", async function(event) {
-        if(event.target.closest('button')){
-            const todoId = event.target.closest('button').dataset.id;
-            try {
-                const resnponse =  await fetch(`https://gdsc-backend-todo-list.onrender.com/api/todos/${todoId}`, {
-                    method: 'DELETE',
-                })
+    todoList.addEventListener("click", async function (event) {
+      if (event.target.closest("button")) {
+        const todoId = event.target.closest("button").dataset.id;
+        try {
+          const resnponse = await fetch(`${domain}/api/todos/${todoId}`, {
+            method: "DELETE",
+          });
 
-                if (response.ok) {
-                    console.log("Todo deleted successfully")
-                    fetchTodos()
-                } else {
-                    console.log("Failed delete todo")
-                }
-            }catch (e) {
+          if (response.ok) {
+            console.log("Todo deleted successfully");
+            fetchTodos();
+          } else {
+            console.log("Failed delete todo");
+          }
+        } catch (e) {
           console.log(`Error update todo: ${e}`);
         }
-        }
-    })
+      }
+    });
   } catch (e) {
     console.log(`Error fetch todos: ${e}`);
   }
@@ -98,7 +97,7 @@ async function addTodos(event) {
     return;
   }
   try {
-    const response = await fetch("https://gdsc-backend-todo-list.onrender.com/api/todos", {
+    const response = await fetch(`${domain}/api/todos`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
