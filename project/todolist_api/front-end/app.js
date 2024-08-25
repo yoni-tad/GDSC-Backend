@@ -1,6 +1,6 @@
 async function fetchTodos() {
   try {
-    const response = await fetch("http://localhost:3000/api/todos");
+    const response = await fetch("https://gdsc-backend-todo-list.onrender.com/api/todos");
     const todos = await response.json();
 
     const todoList = document.getElementById("todo-list");
@@ -45,7 +45,7 @@ async function fetchTodos() {
 
         try {
           const response = await fetch(
-            `http://localhost:3000/api/todos/${todoId}`,
+            `https://gdsc-backend-todo-list.onrender.com/api/todos/${todoId}`,
             {
               method: "PUT",
               headers: {
@@ -69,7 +69,7 @@ async function fetchTodos() {
         if(event.target.closest('button')){
             const todoId = event.target.closest('button').dataset.id;
             try {
-                const resnponse =  await fetch(`http://localhost:3000/api/todos/${todoId}`, {
+                const resnponse =  await fetch(`https://gdsc-backend-todo-list.onrender.com/api/todos/${todoId}`, {
                     method: 'DELETE',
                 })
 
@@ -98,7 +98,7 @@ async function addTodos(event) {
     return;
   }
   try {
-    const response = await fetch("http://localhost:3000/api/todos", {
+    const response = await fetch("https://gdsc-backend-todo-list.onrender.com/api/todos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
