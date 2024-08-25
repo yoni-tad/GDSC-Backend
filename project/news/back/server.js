@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost/news')
 
 app.use(express.json())
 app.use('/api', router)
+app.use(express.static('../front'))
 
 app.listen(4000, () => {
     console.log("Server start at 4000")
