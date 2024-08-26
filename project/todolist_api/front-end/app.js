@@ -1,13 +1,31 @@
 const domain = "https://gdsc-backend-todo-list.onrender.com";
 
+toastr.options = {
+  closeButton: true,
+  debug: false,
+  newestOnTop: false,
+  progressBar: true,
+  positionClass: "toast-top-right",
+  preventDuplicates: false,
+  onclick: null,
+  showDuration: "300",
+  hideDuration: "1000",
+  timeOut: "3000",
+  extendedTimeOut: "1000",
+  showEasing: "swing",
+  hideEasing: "linear",
+  showMethod: "fadeIn",
+  hideMethod: "fadeOut",
+};
+
 async function fetchTodos() {
   try {
+    const todoList = document.getElementById("todo-list");
+    todoList.innerHTML = '<div id="loading"></div>'
     const response = await fetch(`${domain}/api/todos`);
     const todos = await response.json();
 
-    const todoList = document.getElementById("todo-list");
     todoList.innerHTML = "";
-
     todos.forEach((todo) => {
       const todoItem = document.createElement("div");
       // todoItem.textContent = todo.todo
@@ -55,7 +73,7 @@ async function fetchTodos() {
           });
 
           if (!response.ok) {
-            console.log("Failed update todo", response);
+            return console.log("Failed update todo", response);
           }
         } catch (e) {
           console.log(`Error update todo: ${e}`);
@@ -75,6 +93,7 @@ async function fetchTodos() {
           if (response.ok) {
             console.log("Todo deleted successfully");
             fetchTodos();
+            toastr.success("Success! Todo deleted successfully.");
           } else {
             console.log("Failed delete todo");
           }
@@ -106,6 +125,7 @@ async function addTodos(event) {
     });
 
     if (response.ok) {
+      toastr.success("Success! Todo added successfully.");
       document.getElementById("todoInput").value = "";
       fetchTodos();
     } else {
