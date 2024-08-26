@@ -39,17 +39,8 @@ userSchema.pre("save", async function (next) {
   }
 });
 
-// userSchema.methods.comparePassword = async function (password) {
-//     console.log(password)
-//     console.log(this.password)
-//     return bcrypt.compare(password, this.password);
-// }
-
 userSchema.methods.comparePassword = async function (password) {
-    console.log("Input Password:", password);
-    console.log("Hashed Password from DB:", this.password);
-    return bcrypt.compare(password, this.password);
-  };
-
+  return bcrypt.compare(password, this.password);
+};
 
 module.exports = mongoose.model("User", userSchema);

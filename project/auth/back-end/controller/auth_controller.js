@@ -7,15 +7,11 @@ exports.Register = async (req, res, next) => {
   const { username, email, password } = req.body;
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    console.log("Hashed Password:", hashedPassword.toString());
     const user = await User.create({
       username: username,
       email: email,
-      password: hashedPassword,
+      password: password,
     });
-    // console.log("User saved:", user);
-    console.log("Hashed Password (after save):", user.password);
     res.json({ message: "Registration successfully" });
   } catch (e) {
     next(e);
