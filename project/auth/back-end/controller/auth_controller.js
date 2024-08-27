@@ -52,7 +52,7 @@ exports.Login = async (req, res, next) => {
 exports.Profile = async (req, res) => {
   res.json({
     message: `Welcome ${req.user.firstName}`,
-    firsName: req.user.firsName,
+    firstName: req.user.firstName,
     lastName: req.user.lastName,
     email: req.user.email,
   });

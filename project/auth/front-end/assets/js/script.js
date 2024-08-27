@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (response.ok) {
       console.log(data.message);
       toastr.success(data.message)
-      document.getElementById("fullName").innerHTML = data.firstName;
+      document.getElementById("fullName").innerHTML = `${data.firstName} ${data.lastName}`;
     } else {
       console.log("Failed to fetch data");
       window.location.href = `signin.html?status=error&message=${data.message}`;

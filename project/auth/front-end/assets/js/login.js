@@ -40,15 +40,14 @@ async function login(event) {
     const data = await response.json();
     if (response.ok) {
       console.log("Login successfully");
-      const token = await response.json();
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", data);
       window.location.href = "index.html";
     } else {
       toastr.error(data.message);
-      console.log("Failed to register");
+      console.log("Failed to login");
     }
   } catch (e) {
-    console.log(`Error at registration: ${e}`);
+    console.log(`Error at login: ${e}`);
   }
 }
 
