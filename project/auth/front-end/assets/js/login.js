@@ -1,35 +1,55 @@
 const domain = "http://localhost:8000";
 
+toastr.options = {
+  closeButton: true,
+  debug: false,
+  newestOnTop: false,
+  progressBar: true,
+  positionClass: "toast-top-right",
+  preventDuplicates: false,
+  onclick: null,
+  showDuration: "300",
+  hideDuration: "1000",
+  timeOut: "3000",
+  extendedTimeOut: "1000",
+  showEasing: "swing",
+  hideEasing: "linear",
+  showMethod: "fadeIn",
+  hideMethod: "fadeOut",
+};
+
 async function login(event) {
-    event.preventDefault()
+  event.preventDefault();
 
-    const email = document.getElementById('email').value
-    const password = document.getElementById('password').value
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-    try {
-        const response = await fetch(`${domain}/api/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                // "Authorization": 
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password
-            })
-        })
+  try {
+    const response = await fetch(`${domain}/api/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // "Authorization":
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
 
-        if (response.ok) {
-            console.log("Login successfully")
-            const token = await response.json()
-            localStorage.setItem('token', token);
-            window.location.href = 'index.html'
-        } else {
-            console.log("Failed to register")
-        }
-    } catch(e) {
-        console.log(`Error at registration: ${e}`)
+    const data = await response.json();
+    if (response.ok) {
+      console.log("Login successfully");
+      const token = await response.json();
+      localStorage.setItem("token", token);
+      window.location.href = "index.html";
+    } else {
+      toastr.error(data.message);
+      console.log("Failed to register");
     }
+  } catch (e) {
+    console.log(`Error at registration: ${e}`);
+  }
 }
 
-document.getElementById("signin").addEventListener('click', login)
+document.getElementById("signin").addEventListener("click", login);

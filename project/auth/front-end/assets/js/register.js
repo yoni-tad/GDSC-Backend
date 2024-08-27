@@ -47,7 +47,7 @@ async function register(event) {
     const data = await response.json();
     if (response.ok) {
       console.log("Registration successfully");
-      window.location.href = "signin.html?status=register";
+      window.location.href = "signin.html";
     } else {
       toastr.error(data.message)
       console.log("Failed to register");
