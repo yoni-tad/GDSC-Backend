@@ -4,15 +4,21 @@ const User = require("../model/user");
 
 // Register new user
 exports.Register = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
 
   try {
+    const checkEmail = await User.findOne({email: email})
+    if(checkEmail) {
+      return res.status(409).json({message: "This email already used"})
+    }
+
     const user = await User.create({
-      username: username,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       password: password,
     });
-    res.json({ message: "Registration successfully" });
+    res.status(201).json({ message: "Registration successfully" });
   } catch (e) {
     next(e);
   }
@@ -45,7 +51,9 @@ exports.Login = async (req, res, next) => {
 // Profile
 exports.Profile = async (req, res) => {
   res.json({
-    message: `Welcome ${req.user.username}`,
-    username: req.user.username,
+    message: `Welcome ${req.user.firstName}`,
+    firsName: req.user.firsName,
+    lastName: req.user.lastName,
+    email: req.user.email,
   });
 };

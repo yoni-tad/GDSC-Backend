@@ -17,9 +17,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data.message);
+      console.log(data.user);
 
-      document.getElementById('username').innerHTML = data.username
+      document.getElementById('fullName').innerHTML = data.firstName
     } else {
       console.log("Failed to fetch data");
       window.location.href = "signin.html?status=failed to fetch data";
