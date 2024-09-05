@@ -16,6 +16,6 @@ app.use(express.static('../front-end'));
 
         await app.listen(8000, () => console.log("✅ Server start port at 8000")); 
     } catch(e) {
-        console.error("❌ Server error: ", e.message);
+        console.error("❌ Server error:", e.message);
     }
 })();
